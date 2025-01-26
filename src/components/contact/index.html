@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Page</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-white dark:bg-gray-900">
+
+<!-- Contact Form Section -->
+<section class="bg-gray-100 dark:bg-gray-800 py-12 px-4 mt-5">
+    <div class="max-w-screen-lg mx-auto">
+        <h2 class="text-3xl font-bold text-center text-gray-800 dark:text-white mb-6 mt-6">Contact Us</h2>
+        <form action="#" method="POST" class="bg-white dark:bg-gray-900 shadow-md rounded px-8 pt-6 pb-8">
+            <div class="mb-4">
+                <label for="name" class="block text-gray-700 dark:text-gray-300 text-sm font-bold mb-2">Name</label>
+                <input type="text" id="name" name="name" required 
+                       class="shadow appearance-none border border-gray-300 dark:border-gray-600 rounded w-full py-2 px-3 text-gray-700 dark:text-gray-300 leading-tight focus:outline-none focus:ring-2 focus:ring-blue-500">
+            </div>
+            <div class="mb-4">
+                <label for="email" class="block text-gray-700 dark:text-gray-300 text-sm font-bold mb-2">Email</label>
+                <input type="email" id="email" name="email" required 
+                       class="shadow appearance-none border border-gray-300 dark:border-gray-600 rounded w-full py-2 px-3 text-gray-700 dark:text-gray-300 leading-tight focus:outline-none focus:ring-2 focus:ring-blue-500">
+            </div>
+            <div class="mb-6">
+                <label for="message" class="block text-gray-700 dark:text-gray-300 text-sm font-bold mb-2">Message</label>
+                <textarea id="message" name="message" rows="5" required 
+                          class="shadow appearance-none border border-gray-300 dark:border-gray-600 rounded w-full py-2 px-3 text-gray-700 dark:text-gray-300 leading-tight focus:outline-none focus:ring-2 focus:ring-blue-500"></textarea>
+            </div>
+            <div class="flex items-center justify-between">
+                <button type="submit" 
+                        class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:ring-2 focus:ring-blue-500">
+                    Send Message
+                </button>
+            </div>
+        </form>
+    </div>
+</section>
+
+<script>
+    const hamburgerBtn = document.getElementById("hamburger-btn");
+    const navbar = document.getElementById("navbar-default");
+
+    hamburgerBtn.addEventListener("click", () => {
+        navbar.classList.toggle("hidden");
+    });
+</script>
+
+</body>
+</html>
