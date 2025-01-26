@@ -4,6 +4,15 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
+    <style>
+        /* เพิ่มสไตล์สำหรับ responsive */
+        #piechart {
+          width: 100%; /* ทำให้กราฟขยายเต็มพื้นที่ */
+          max-width: 900px;
+          max-height: 900px; /* ความกว้างสูงสุดของกราฟ */
+          height: auto; /* ปรับความสูงโดยสัมพันธ์กับความกว้าง */
+        }
+      </style>
 </head>
   <body>
     <section class="bg-gray-900 text-white m-auto">
@@ -12,47 +21,65 @@
             My Skills
           </h1>
         </header>
-    <div class="grid justify-center">
-    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-    <script type="text/javascript">
-      google.charts.load('current', {'packages':['corechart']});
-      google.charts.setOnLoadCallback(drawChart);
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-screen-xl px-6 mx-auto items-center">
+            <div class="flex justify-center">
+                <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+                <script type="text/javascript">
+                  google.charts.load("current", { packages: ["corechart"] });
+                  google.charts.setOnLoadCallback(drawChart);
+      
+                  function drawChart() {
+                    var data = google.visualization.arrayToDataTable([
+                      ["Task", "Hours per Day"],
+                      ["Laravel", 11],
+                      ["NestJS, Nuxt.js, Next.js", 10],
+                      ["MySQL / PostgreSQL", 8],
+                      ["Android (Java)", 9],
+                      ["RESTful APIs", 7],
+                    ]);
+      
+                    var options = {
+                      title: "Skill Proficiency",
+                      titleTextStyle: { color: "white", fontSize: 14, bold: true },
+                      is3D: true,
+                      colors: [
+                        "#4285F4",
+                        "#34A853",
+                        "#9966CC",
+                        "#EA4335",
+                        "#F4B400",
+                        "#AB47BC",
+                      ],
+                      pieSliceText: "percentage",
+                      pieSliceTextStyle: { color: "white", fontSize: 12 },
+                      legend: {
+                        position: "bottom",
+                        textStyle: { color: "white", fontSize: 14 },
+                      },
+                      chartArea: {
+                        width: "100%", // ขยายเต็มพื้นที่
+                        height: "80%", // กำหนดความสูง
+                      },
+                      backgroundColor: "#111827",
+                    };
+      
+                    // Resize chart when the window is resized
+                    var chart = new google.visualization.PieChart(
+                      document.getElementById("piechart")
+                    );
+      
+                    function resizeChart() {
+                      chart.draw(data, options);
+                    }
+      
+                    window.addEventListener("resize", resizeChart); // Event listener สำหรับ resize
+                    chart.draw(data, options); // วาดกราฟ
+                  }
+                </script>
+                <div id="piechart"></div>
+              </div>
 
-      function drawChart() {
-
-        var data = google.visualization.arrayToDataTable([
-          ['Task', 'Hours per Day'],
-          ['Laravel',     11],
-          ['NestJS,Nuxt.js,Next.js',      10],
-          ['MySQL / PostgreSQL',  8],
-          ['Android (Java)', 9],
-          ['RESTful APIs',    7]
-        ]);
-
-        var options = {
-          title: 'Skill Proficiency',
-          titleTextStyle: { color: 'white', fontSize: 18, bold: true }, // สี Title เป็นสีขาว
-          is3D: true, // กราฟ 3 มิติ
-          colors: ['#4285F4', '#34A853', '#9966CC', '#EA4335', '#F4B400', '#AB47BC'],
-          pieSliceText: 'percentage',
-          pieSliceTextStyle: { color: 'white', fontSize: 14 }, // สีข้อความบนชิ้นส่วนกราฟ
-          legend: { 
-            position: 'bottom', 
-            textStyle: { color: 'white', fontSize: 12 } // สี ข้อความด้านล่าง
-          },
-          chartArea: { width: '100%', height: '70%' },
-          backgroundColor: '#111827', // พื้นหลัง
-        };
-
-        var chart = new google.visualization.PieChart(document.getElementById('piechart'));
-
-        chart.draw(data, options);
-      }
-    </script>
-    <div id="piechart" style="width: 350px; height: 300px; "></div>
-    </div>
-
-    <div class="m-7 max-w-2xl mx-auto text-center">
+    <div class="m-7 max-w-2xl mx-auto text-center md:text-leftight ">
         <h2 class="text-xl font-bold mb-4">Languages</h2>
         <p class="pl-4">
             JavaScript/TypeScript: Proficient in front-end & back-end development.
@@ -66,9 +93,7 @@
         <p class="pl-4 pb-5">
             Dart: Basic experience with Flutter.
         </p>
-    </div>
 
-    <div class="m-7 max-w-2xl mx-auto text-center">
         <h2 class="text-xl font-bold mb-4">Front-End Development</h2>
         <p class="pl-4">
             Frameworks: Nuxt.js (Vue.js), Next.js (React.js).
@@ -76,9 +101,7 @@
         <p class="pl-4 pb-5">
             Styling: TailwindCSS, Bootstrap, CSS3.
         </p>
-    </div>
 
-    <div class="m-7 max-w-2xl mx-auto text-center">
         <h2 class="text-2xl font-bold mb-4">Back-End Development</h2>
         <p class="pl-4">
             Frameworks: Laravel, NestJS.
@@ -89,9 +112,7 @@
         <p class="pl-4 pb-5">
             API: RESTful APIs, GraphQL.
         </p>
-    </div>
-    
-    <div class="m-7 max-w-2xl mx-auto text-center">
+
         <h2 class="text-2xl font-bold mb-4">Mobile Development</h2>
         <p class="pl-4">
             Android: Strong experience with native Android.
@@ -99,9 +120,7 @@
         <p class="pl-4 pb-5">
             Flutter: Basic cross-platform app development.
         </p>
-    </div>
 
-    <div class="m-7 max-w-2xl mx-auto text-center">
         <h2 class="text-2xl font-bold mb-4">Core Strengths</h2>
         <p class="pl-4 ">
             Strong MVC & Microservices understanding.
@@ -109,9 +128,10 @@
         <p class="pl-4 ">
             Strong MVC & Microservices understanding.
         </p>
-        <p class="pl-4 pb-20 ">
+        <p class="pl-4 pb-10 ">
             Effective in Agile teams with excellent problem-solving skills.
         </p>
+        </div>
     </div>
 
     </section>
